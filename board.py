@@ -18,6 +18,10 @@ play_button = tk.Button(root, text="Play", width=20,
                         height=2, font=("Arial", 16), highlightbackground="red", command=lambda: speak(text_input.get()))
 play_button.grid(row=0, column=3)
 
+delete_button = tk.Button(root, text="Delete", width=20,
+                          height=2, font=("Arial", 16), highlightbackground="red", command=lambda: text_input.delete(0, tk.END))
+delete_button.grid(row=0, column=4)
+
 
 def update_input(text):
     text_input.insert(tk.END, " " + text)
