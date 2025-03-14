@@ -15,7 +15,7 @@ text_input = tk.Entry(root, width=70, font=("Arial", 16))
 text_input.grid(row=0, column=1, columnspan=3)
 
 speak_button = tk.Button(root, text="Speak", width=20,
-                        height=2, font=("Arial", 16), highlightbackground="red", command=lambda: speak(text_input.get()))
+                         height=2, font=("Arial", 16), highlightbackground="red", command=lambda: speak(text_input.get()))
 speak_button.grid(row=0, column=0)
 
 delete_button = tk.Button(root, text="Delete", width=20,
@@ -28,10 +28,11 @@ def update_input(text):
 
 
 def speak(text):
-    text = text.lower()
-    engine = pyttsx3.init()
-    engine.say(text)
-    engine.runAndWait()
+    if text:
+        text = text.lower()
+        engine = pyttsx3.init()
+        engine.say(text)
+        engine.runAndWait()
 
 
 def create_buttons():
