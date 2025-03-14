@@ -7,7 +7,7 @@ root.title("AAC Board")
 words = [
     ["I", "is", "want", "Time", "More things"],
     ["you", "can", "like", "not", "Places"],
-    ["it", "do", "go", "more", "Come"],
+    ["it", "do", "go", "more", "Description"],
     ["People", "have", "stop", "to", "Food & Drink"],
     ["Questions", "help", "Actions", "Connecting Words", "Animals"]]
 
