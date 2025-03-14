@@ -12,7 +12,11 @@ words = [
     ["Questions", "help", "Actions", "Connecting Words", "Animals"]]
 
 text_input = tk.Entry(root, width=50, font=("Arial", 16))
-text_input.grid(row=0, column=0, columnspan=5, padx=5, pady=5)
+text_input.grid(row=0, column=0, columnspan=3)
+
+play_button = tk.Button(root, text="Play", width=20,
+                        height=2, font=("Arial", 16), highlightbackground="red", command=lambda: speak(text_input.get()))
+play_button.grid(row=0, column=3)
 
 
 def update_input(text):
