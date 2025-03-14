@@ -12,7 +12,11 @@ words = [
     ["Questions", "help", "Actions", "Connecting Words", "Animals"]]
 
 text_input = tk.Entry(root, width=50, font=("Arial", 16))
-text_input.grid(row=0, column=0, columnspan=5, padx=5, pady=5);
+text_input.grid(row=0, column=0, columnspan=5, padx=5, pady=5)
+
+
+def update_input(text):
+    text_input.insert(tk.END, " " + text)
 
 
 def speak(text):
@@ -36,7 +40,7 @@ def create_buttons():
             elif index == 3:
                 color = "orange"
             button = tk.Button(root, text=word, width=20,
-                               height=4, font=("Arial", 16), highlightbackground=color, bg=color, command=lambda w=word: speak(w))
+                               height=4, font=("Arial", 16), highlightbackground=color, bg=color, command=lambda w=word: [update_input(w), speak(w)])
             button.grid(row=i + 1, column=index, padx=5, pady=5)
 
 
