@@ -22,6 +22,9 @@ delete_button = tk.Button(root, text="Delete", width=20,
                           height=2, font=("Arial", 16), highlightbackground="red", command=lambda: text_input.delete(0, tk.END))
 delete_button.grid(row=0, column=4)
 
+back_button = tk.Button(root, text="Back", width=20,
+                        height=4, font=("Arial", 16), highlightbackground="black", command=lambda: create_buttons())
+
 
 def update_input(text):
     text_input.insert(tk.END, " " + text)
@@ -40,18 +43,21 @@ def open_questions():
         if isinstance(widget, tk.Button) and widget not in [speak_button, delete_button]:
             widget.grid_forget()
 
+    back_button.grid(row=1, column=0, padx=5, pady=5)
+
     questions_words = [
-        ["What", "Where", "Who", "When", "Why"],
-        ["Which", "Whose", "Whom", "How"],]
-    
+        ["What", "Where", "Who", "When"],
+        ["Why", "Which", "Whose", "Whom", "How"],]
+
     for i, row in enumerate(questions_words):
         for index, word in enumerate(row):
             button = tk.Button(root, text=word, width=20,
                                height=4, font=("Arial", 16), highlightbackground="blue", bg="blue", command=lambda w=word: [update_input(w), speak(w)])
-            button.grid(row=i + 1, column=index, padx=5, pady=5)
+            button.grid(row=i + 1, column=index+1, padx=5, pady=5)
 
 
 def create_buttons():
+    back_button.grid_forget()
     for i, row in enumerate(words):
         for index, word in enumerate(row):
             if index == 0 and i == 4:
@@ -64,14 +70,14 @@ def create_buttons():
                 color = "purple"
             elif index == 3:
                 color = "orange"
-           
+
             if word == "Questions":
                 button = tk.Button(root, text=word, width=20,
-                               height=4, font=("Arial", 16), highlightbackground=color, bg=color, command=lambda: [open_questions()])
+                                   height=4, font=("Arial", 16), highlightbackground=color, bg=color, command=lambda: [open_questions()])
                 button.grid(row=i + 1, column=index, padx=5, pady=5)
             else:
                 button = tk.Button(root, text=word, width=20,
-                               height=4, font=("Arial", 16), highlightbackground=color, bg=color, command=lambda w=word: [update_input(w), speak(w)])
+                                   height=4, font=("Arial", 16), highlightbackground=color, bg=color, command=lambda w=word: [update_input(w), speak(w)])
                 button.grid(row=i + 1, column=index, padx=5, pady=5)
 
 
