@@ -1,5 +1,5 @@
 import tkinter as tk
-import pyttsx3
+from text_to_speech import speak
 
 root = tk.Tk()
 root.title("AAC Board")
@@ -28,14 +28,6 @@ back_button = tk.Button(root, text="Back", width=20,
 
 def update_input(text):
     text_input.insert(tk.END, " " + text)
-
-
-def speak(text):
-    if text:
-        text = text.lower()
-        engine = pyttsx3.init()
-        engine.say(text)
-        engine.runAndWait()
 
 
 def open_questions():
