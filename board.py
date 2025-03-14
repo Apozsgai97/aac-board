@@ -22,8 +22,16 @@ def speak(text):
 def create_buttons():
     for i, row in enumerate(words):
         for index, word in enumerate(row):
-            button = tk.Button(root, text=word, width=10,
-                               height=3, font=("Arial", 12), command=lambda w=word: speak(w))
+            if index == 0:
+                color = "#FFCC00"
+            elif index == 1 or index == 2:
+                color = "green"
+            elif index == 3:
+                color = "orange"
+            elif index == 4:
+                color = "purple"
+            button = tk.Button(root, text=word, width=20,
+                               height=4, font=("Arial", 16), highlightbackground=color, bg=color, command=lambda w=word: speak(w))
             button.grid(row=i, column=index)
 
 
