@@ -35,6 +35,20 @@ def speak(text):
         engine.runAndWait()
 
 
+def open_questions():
+    questions = tk.Toplevel(root)
+    questions.title("Questions")
+
+    questions_words = [
+        ["What", "Where", "Who", "When", "Why"],
+        ["Which", "Whose", "Whom", "How"],]
+    for i, row in enumerate(questions_words):
+        for index, word in enumerate(row):
+            button = tk.Button(questions, text=word, width=20,
+                               height=4, font=("Arial", 16), highlightbackground="blue", bg="blue", command=lambda w=word: [update_input(w), speak(w)])
+            button.grid(row=i + 1, column=index, padx=5, pady=5)
+
+
 def create_buttons():
     for i, row in enumerate(words):
         for index, word in enumerate(row):
@@ -48,9 +62,15 @@ def create_buttons():
                 color = "purple"
             elif index == 3:
                 color = "orange"
-            button = tk.Button(root, text=word, width=20,
+           
+            if word == "Questions":
+                button = tk.Button(root, text=word, width=20,
+                               height=4, font=("Arial", 16), highlightbackground=color, bg=color, command=lambda: [open_questions()])
+                button.grid(row=i + 1, column=index, padx=5, pady=5)
+            else:
+                button = tk.Button(root, text=word, width=20,
                                height=4, font=("Arial", 16), highlightbackground=color, bg=color, command=lambda w=word: [update_input(w), speak(w)])
-            button.grid(row=i + 1, column=index, padx=5, pady=5)
+                button.grid(row=i + 1, column=index, padx=5, pady=5)
 
 
 create_buttons()
