@@ -36,15 +36,17 @@ def speak(text):
 
 
 def open_questions():
-    questions = tk.Toplevel(root)
-    questions.title("Questions")
+    for widget in root.winfo_children():
+        if isinstance(widget, tk.Button):
+            widget.grid_forget()
 
     questions_words = [
         ["What", "Where", "Who", "When", "Why"],
         ["Which", "Whose", "Whom", "How"],]
+    
     for i, row in enumerate(questions_words):
         for index, word in enumerate(row):
-            button = tk.Button(questions, text=word, width=20,
+            button = tk.Button(root, text=word, width=20,
                                height=4, font=("Arial", 16), highlightbackground="blue", bg="blue", command=lambda w=word: [update_input(w), speak(w)])
             button.grid(row=i + 1, column=index, padx=5, pady=5)
 
