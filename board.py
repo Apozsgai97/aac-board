@@ -1,16 +1,9 @@
 import tkinter as tk
 from text_to_speech import speak
-from questions import open_questions
+from main_board import create_buttons
 
 root = tk.Tk()
 root.title("AAC Board")
-
-words = [
-    ["I", "is", "want", "Time", "More things"],
-    ["you", "can", "like", "not", "Places"],
-    ["it", "do", "go", "more", "Descriptors"],
-    ["People", "have", "stop", "to", "Food & Drink"],
-    ["Questions", "help", "Actions", "Connecting Words", "Animals"]]
 
 text_input = tk.Entry(root, width=70, font=("Arial", 16))
 text_input.grid(row=0, column=1, columnspan=3)
@@ -24,37 +17,12 @@ delete_button = tk.Button(root, text="Delete", width=20,
 delete_button.grid(row=0, column=4)
 
 back_button = tk.Button(root, text="Back", width=20,
-                        height=4, font=("Arial", 16), highlightbackground="black", command=lambda: create_buttons())
+                        height=4, font=("Arial", 16), highlightbackground="black", command=lambda: create_buttons(root, speak_button, delete_button, back_button, update_input))
 
 
 def update_input(text):
     text_input.insert(tk.END, " " + text)
 
-def create_buttons():
-    back_button.grid_forget()
-    for i, row in enumerate(words):
-        for index, word in enumerate(row):
-            if index == 0 and i == 4:
-                color = "blue"
-            elif index == 0:
-                color = "#FFCC00"
-            elif index == 1 or index == 2:
-                color = "green"
-            elif index == 4 or index == 3 and i == 0:
-                color = "purple"
-            elif index == 3:
-                color = "orange"
-
-            if word == "Questions":
-                button = tk.Button(root, text=word, width=20,
-                                   height=4, font=("Arial", 16), highlightbackground=color, bg=color, command=lambda: [open_questions(root, speak_button, delete_button, back_button, update_input)])
-                button.grid(row=i + 1, column=index, padx=5, pady=5)
-            else:
-                button = tk.Button(root, text=word, width=20,
-                                   height=4, font=("Arial", 16), highlightbackground=color, bg=color, command=lambda w=word: [update_input(w), speak(w)])
-                button.grid(row=i + 1, column=index, padx=5, pady=5)
-
-
-create_buttons()
+create_buttons(root, speak_button, delete_button, back_button, update_input)
 
 root.mainloop()
