@@ -37,7 +37,7 @@ def speak(text):
 
 def open_questions():
     for widget in root.winfo_children():
-        if isinstance(widget, tk.Button):
+        if isinstance(widget, tk.Button) and widget not in [speak_button, delete_button]:
             widget.grid_forget()
 
     questions_words = [
