@@ -13,9 +13,11 @@ words = [
 
 
 def speak(text):
+    text = text.lower()
     engine = pyttsx3.init()
     engine.say(text)
     engine.runAndWait()
+
 
 def create_buttons():
     for i, row in enumerate(words):
