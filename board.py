@@ -11,12 +11,12 @@ words = [
     ["People", "have", "stop", "to", "Food & Drink"],
     ["Questions", "help", "Actions", "Connecting Words", "Animals"]]
 
-text_input = tk.Entry(root, width=50, font=("Arial", 16))
-text_input.grid(row=0, column=0, columnspan=3)
+text_input = tk.Entry(root, width=70, font=("Arial", 16))
+text_input.grid(row=0, column=1, columnspan=3)
 
 play_button = tk.Button(root, text="Play", width=20,
                         height=2, font=("Arial", 16), highlightbackground="red", command=lambda: speak(text_input.get()))
-play_button.grid(row=0, column=3)
+play_button.grid(row=0, column=0)
 
 delete_button = tk.Button(root, text="Delete", width=20,
                           height=2, font=("Arial", 16), highlightbackground="red", command=lambda: text_input.delete(0, tk.END))
