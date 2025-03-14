@@ -1,6 +1,6 @@
 import tkinter as tk
 from text_to_speech import speak
-from questions import open_questions
+from questions_board import open_questions
 
 words = [
     ["I", "is", "want", "Time", "More things"],
