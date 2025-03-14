@@ -1,5 +1,6 @@
 import tkinter as tk
 from text_to_speech import speak
+from questions import open_questions
 
 root = tk.Tk()
 root.title("AAC Board")
@@ -29,27 +30,6 @@ back_button = tk.Button(root, text="Back", width=20,
 def update_input(text):
     text_input.insert(tk.END, " " + text)
 
-
-def open_questions():
-    for widget in root.winfo_children():
-        if isinstance(widget, tk.Button) and widget not in [speak_button, delete_button]:
-            widget.grid_forget()
-
-    back_button.grid(row=1, column=0, padx=5, pady=5)
-
-    questions_words = [
-        ["What", "Where", "Who", "When"],
-        ["Question", "Why", "Which", "Whose", "Whom"],
-        ["How", "How much", "How many", "How often", "How long"]]
-
-    for i, row in enumerate(questions_words):
-        for index, word in enumerate(row):
-            button = tk.Button(root, text=word, width=20,
-                               height=4, font=("Arial", 16), highlightbackground="blue", bg="blue", command=lambda w=word: [update_input(w), speak(w)])
-            start_column = 1 if i == 0 else 0
-            button.grid(row=i + 1, column=start_column+index, padx=5, pady=5)
-
-
 def create_buttons():
     back_button.grid_forget()
     for i, row in enumerate(words):
@@ -67,7 +47,7 @@ def create_buttons():
 
             if word == "Questions":
                 button = tk.Button(root, text=word, width=20,
-                                   height=4, font=("Arial", 16), highlightbackground=color, bg=color, command=lambda: [open_questions()])
+                                   height=4, font=("Arial", 16), highlightbackground=color, bg=color, command=lambda: [open_questions(root, speak_button, delete_button, back_button, update_input)])
                 button.grid(row=i + 1, column=index, padx=5, pady=5)
             else:
                 button = tk.Button(root, text=word, width=20,
