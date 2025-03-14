@@ -11,6 +11,9 @@ words = [
     ["People", "have", "stop", "to", "Food & Drink"],
     ["Questions", "help", "Actions", "Connecting Words", "Animals"]]
 
+text_input = tk.Entry(root, width=50, font=("Arial", 16))
+text_input.grid(row=0, column=0, columnspan=5, padx=5, pady=5);
+
 
 def speak(text):
     text = text.lower()
@@ -34,7 +37,7 @@ def create_buttons():
                 color = "orange"
             button = tk.Button(root, text=word, width=20,
                                height=4, font=("Arial", 16), highlightbackground=color, bg=color, command=lambda w=word: speak(w))
-            button.grid(row=i, column=index, padx=5, pady=5)
+            button.grid(row=i + 1, column=index, padx=5, pady=5)
 
 
 create_buttons()
