@@ -47,13 +47,15 @@ def open_questions():
 
     questions_words = [
         ["What", "Where", "Who", "When"],
-        ["Why", "Which", "Whose", "Whom", "How"],]
+        ["Question", "Why", "Which", "Whose", "Whom"],
+        ["How", "How much", "How many", "How often", "How long"]]
 
     for i, row in enumerate(questions_words):
         for index, word in enumerate(row):
             button = tk.Button(root, text=word, width=20,
                                height=4, font=("Arial", 16), highlightbackground="blue", bg="blue", command=lambda w=word: [update_input(w), speak(w)])
-            button.grid(row=i + 1, column=index+1, padx=5, pady=5)
+            start_column = 1 if i == 0 else 0
+            button.grid(row=i + 1, column=start_column+index, padx=5, pady=5)
 
 
 def create_buttons():
