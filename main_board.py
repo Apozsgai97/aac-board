@@ -40,7 +40,7 @@ def create_buttons(root, speak_button, delete_button, back_button, update_input)
                 button = tk.Button(root, text=word, width=20,
                                    height=4, font=("Arial", 16), highlightbackground=color, bg=color, command=lambda w=word: [open_places(root, speak_button, delete_button, back_button, update_input)])
                 button.grid(row=i + 1, column=index, padx=5, pady=5)
-            elif word == "Places":
+            elif word == "Animals":
                 button = tk.Button(root, text=word, width=20,
                                    height=4, font=("Arial", 16), highlightbackground=color, bg=color, command=lambda w=word: [open_animals(root, speak_button, delete_button, back_button, update_input)])
                 button.grid(row=i + 1, column=index, padx=5, pady=5)
