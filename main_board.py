@@ -4,6 +4,7 @@ from questions_board import open_questions
 from time_board import open_time
 from places_board import open_places
 from animals_board import open_animals
+from food_drink_board import open_food_drink
 
 WORDS = [
     ["I", "is", "want", "Time", "More things"],
@@ -43,6 +44,10 @@ def create_buttons(root, speak_button, delete_button, back_button, update_input)
             elif word == "Animals":
                 button = tk.Button(root, text=word, width=20,
                                    height=4, font=("Arial", 16), highlightbackground=color, bg=color, command=lambda w=word: [open_animals(root, speak_button, delete_button, back_button, update_input)])
+                button.grid(row=i + 1, column=index, padx=5, pady=5)
+            elif word == "Food & Drink":
+                button = tk.Button(root, text=word, width=20,
+                                   height=4, font=("Arial", 16), highlightbackground=color, bg=color, command=lambda w=word: [open_food_drink(root, speak_button, delete_button, back_button, update_input)])
                 button.grid(row=i + 1, column=index, padx=5, pady=5)
             else:
                 button = tk.Button(root, text=word, width=20,
