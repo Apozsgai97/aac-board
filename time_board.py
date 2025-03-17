@@ -1,6 +1,6 @@
 import tkinter as tk
 from text_to_speech import speak
-time_words = [
+TIME_WORDS = [
     ["Morning", "Afternoon", "Evening", "Night"],
     ["Today", "Tomorrow", "Yesterday", "Weekend", "Weekday"],
     ["Now", "Later", "Hour", "Minute", "Second"],
@@ -15,7 +15,7 @@ def open_time(root, speak_button, delete_button, back_button, update_input):
 
     back_button.grid(row=1, column=0, padx=5, pady=5)
 
-    for i, row in enumerate(time_words):
+    for i, row in enumerate(TIME_WORDS):
         for index, word in enumerate(row):
             button = tk.Button(root, text=word, width=20,
                                height=4, font=("Arial", 16), highlightbackground="purple", bg="purple", command=lambda w=word: [update_input(w), speak(w)])

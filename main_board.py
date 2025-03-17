@@ -4,7 +4,7 @@ from questions_board import open_questions
 from time_board import open_time
 from places_board import open_places
 
-words = [
+WORDS = [
     ["I", "is", "want", "Time", "More things"],
     ["you", "can", "like", "not", "Places"],
     ["it", "do", "go", "more", "Descriptors"],
@@ -14,7 +14,7 @@ words = [
 
 def create_buttons(root, speak_button, delete_button, back_button, update_input):
     back_button.grid_forget()
-    for i, row in enumerate(words):
+    for i, row in enumerate(WORDS):
         for index, word in enumerate(row):
             if index == 0 and i == 4:
                 color = "blue"
