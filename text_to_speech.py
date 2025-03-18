@@ -2,10 +2,11 @@ import pyttsx3
 import requests
 
 def speak(text):
-    if text:
-        text = text.lower()
+    corrected_text = check_grammar(text)
+    if corrected_text:
+        corrected_text = corrected_text.lower()
         engine = pyttsx3.init()
-        engine.say(text)
+        engine.say(corrected_text)
         engine.runAndWait()
 
 
