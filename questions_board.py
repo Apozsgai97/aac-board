@@ -1,11 +1,13 @@
 
 import tkinter as tk
 from text_to_speech import speak
-QUESTIONS_BOARD = [
-        ["What", "Where", "Who", "When"],
-        ["Question", "Why", "Which", "Whose", "Whom"],
-        ["How", "How much", "How many", "How often", "How long"]]
+from automation import sort_words
 
+QUESTIONS_WORDS = [
+    "What", "Where", "Who", "When",
+    "Question", "Why", "Which", "Whose", "Whom",
+    "How", "How much", "How many", "How often", "How long"
+]
 
 def open_questions(root, speak_button, delete_button, back_button, update_input):
     for widget in root.winfo_children():
@@ -14,8 +16,9 @@ def open_questions(root, speak_button, delete_button, back_button, update_input)
 
     back_button.grid(row=1, column=0, padx=5, pady=5)
 
+    sorted_questions = sort_words(QUESTIONS_WORDS)
 
-    for i, row in enumerate(QUESTIONS_BOARD):
+    for i, row in enumerate(sorted_questions):
         for index, word in enumerate(row):
             button = tk.Button(root, text=word, width=20,
                                height=4, font=("Arial", 16), highlightbackground="blue", bg="blue", command=lambda w=word: [update_input(w), speak(w)])
