@@ -1,12 +1,3 @@
-test_words = [
-    "Big", "Small", "Fast", "Slow",
-    "Happy", "Sad", "Angry", "Excited", "Tired",
-    "Bright", "Dark", "Noisy", "Quiet", "Calm",
-    "Soft", "Hard", "Hot", "Cold", "Warm",
-    "Friendly", "Brave", "Shy", "Strong", "Weak"
-]
-
-
 def sort_words(words):
 
     sorted_words = sorted(words)
