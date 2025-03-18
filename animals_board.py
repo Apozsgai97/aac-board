@@ -1,12 +1,15 @@
 from text_to_speech import speak
 import tkinter as tk
+from automation import sort_words
+
 ANIMALS_WORDS = [
-    ["Dog", "Cat", "Bird", "Fish"],
-    ["Elephant", "Tiger", "Lion", "Giraffe", "Zebra"],
-    ["Rabbit", "Fox", "Bear", "Wolf", "Deer"],
-    ["Horse", "Cow", "Sheep", "Pig", "Goat"],
-    ["Dolphin", "Shark", "Octopus", "Penguin", "Whale"]
+    "Dog", "Cat", "Bird", "Fish",
+    "Elephant", "Tiger", "Lion", "Giraffe", "Zebra",
+    "Rabbit", "Fox", "Bear", "Wolf", "Deer",
+    "Horse", "Cow", "Sheep", "Pig", "Goat",
+    "Dolphin", "Shark", "Octopus", "Penguin", "Whale"
 ]
+
 
 def open_animals(root, speak_button, delete_button, back_button, update_input):
     for widget in root.winfo_children():
@@ -15,7 +18,9 @@ def open_animals(root, speak_button, delete_button, back_button, update_input):
 
     back_button.grid(row=1, column=0, padx=5, pady=5)
 
-    for i, row in enumerate(ANIMALS_WORDS):
+    sort_animals = sort_words(ANIMALS_WORDS)
+
+    for i, row in enumerate(sort_animals):
         for index, word in enumerate(row):
             button = tk.Button(root, text=word, width=20,
                                height=4, font=("Arial", 16), highlightbackground="blue", bg="blue", command=lambda w=word: [update_input(w), speak(w)])
